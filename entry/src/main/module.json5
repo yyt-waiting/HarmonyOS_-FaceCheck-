@@ -1,0 +1,40 @@
+// Path: entry/src/main/module.json5
+// 完整配置：requestPermissions + SystemCapabilities
+
+{
+  "module": {
+    "requestPermissions": [
+      { "name": "ohos.permission.CAMERA" },
+      { "name": "ohos.permission.READ_MEDIA" },
+      { "name": "ohos.permission.WRITE_MEDIA" }
+    ],
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": ["entity.system.home"],
+            "actions": ["action.system.home"]
+          }
+        ]
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/Index",
+          "pages/RegisterPage",
+          "pages/SignInPage",
+          "pages/RecordPage",
+          "pages/LivenessResultPage",
+          "pages/LivenessFailPage",
+          "pages/SignInResultPage"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      }
+    ]
+  }
+}

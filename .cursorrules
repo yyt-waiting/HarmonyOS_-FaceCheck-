@@ -1,0 +1,52 @@
+# [Project Context] FaceCheck - 鸿蒙 API 12 原生 AI 签到系统全景架构
+
+## 写在前面：
+# [Project Context] 鸿蒙 AI 刷脸签到应用 (FaceCheck)
+
+## 1. 项目概述
+我们要开发一款基于鸿蒙 HarmonyOS NEXT (Stage模型, API 12) 的原生应用，名称为 `FaceCheck`。
+核心目标是通过华为 Core Vision Kit 实现人脸的录入、活体检测与签到比对功能，结合关系型数据库实现数据持久化。
+
+## 2. 技术栈与开发规范（严格遵守）
+- **开发语言**: ArkTS, 严格遵守 TypeScript 强类型校验。
+- **UI框架**: ArkUI 声明式范式 (使用 @Entry, @Component, @State 等装饰器)。
+- **鸿蒙版本规范**: **绝对禁止**使用废弃的 API 8/9 写法。导入系统模块必须优先使用 `@kit` 形式（例如 `import { faceComparator } from '@kit.CoreVisionKit'`，而不是老旧的 `@ohos.xxx`）。
+- **异步处理**: 鸿蒙的系统调用绝大多数是 Promise，所有异步逻辑必须使用 `async/await`，并**强制包裹在 `try-catch` 块中**以捕获异常。
+
+## 3. 核心 API 文档依据（参考最新文档）
+以下是系统视觉能力的核心参考，AI 在编写相关代码前必须必须必须必须！完全！绝对！100%！依据此逻辑：
+- **人脸比对 (FaceComparator)**: `https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/core-vision-face-comparator`
+- **人脸检测 (FaceDetector)**: `https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/core-vision-face-detector`
+- **活体检测 (InteractiveLiveness)**: `https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/vision-interactiveliveness`
+
+## 4. 核心模块要求
+1. **数据与权限**: 需配置 `module.json5` 的相机和数据权限；封装 `@ohos.data.relationalStore` 用于保存学生信息（姓名、学号、人脸图像特征）及签到记录。
+2. **工具类**: 封装 `FaceVisionUtil.ets` 处理相机调用、活体检测拉起、人脸比对。
+3. **UI界面**: 使用 Tabs 包含三大页面：注册人脸页、刷脸签到页、签到记录页。
+
+
+
+## 1. 核心定位与技术底座
+- **项目目标**: 基于 HarmonyOS NEXT (Stage模型, API 12) 开发的高性能校园/企业刷脸签到 App。
+- **技术栈**: ArkTS + ArkUI + @kit 现代模块化 API。
+- **架构模式**: 采用分层架构设计（UI 表现层 + ViewModels 状态层 + Service 核心逻辑层 + Utils 工具层）。
+
+## 2. 核心业务与数据流约束（极度重要）
+1. **持久化策略避坑**:
+   - **绝对禁止**将 `PixelMap`（图像内存对象）直接存入 SQLite。
+   - **正确做法**: 注册录入人脸时，将获取到的照片保存到应用的沙箱目录（Sandbox），并在 `relationalStore` 中存入对应的**文件绝对路径 (fileUri)** 或 **Base64 字符串**。比对时再从路径读取重建为 `PixelMap`。
+2. **数据模型 (Data Schema)**:
+   - `User` 表：id, studentId (学号), name (姓名), faceUri (人脸特征凭证路径), createTime。
+   - `Record` 表：id, studentId, signTime (签到时间), status (签到状态: 1成功, 0失败), similarity (相似度得分)。
+3. **视觉与硬件权限 (module.json5)**:
+   - 必须配置：`ohos.permission.CAMERA` (相机), `ohos.permission.READ_MEDIA`, `ohos.permission.WRITE_MEDIA`。
+   - 交互式活体检测与相机调用前，必须执行**动态权限申请 (requestPermissionsFromUser)**。
+
+## 3. 鸿蒙官方 API 参考底座
+- **互动活体检测 (InteractiveLiveness)**: 调起系统 UI 验证真人，防照片/视频攻击。成功后获取当前真实人脸图像。
+- **人脸检测 (FaceDetector)**: 静态图片人脸框提取与质量预检。
+- **人脸比对 (FaceComparator)**: 传入基准人脸(注册)与现场人脸(活体检测结果)，返回相似度 Score。
+
+## 4. 内存与性能红线 (Red Lines)
+- 只要使用了 `PixelMap`、相机流、流媒体流，用完必须立刻显式调用 `.release()` 释放内存，否则必将导致 C++ 层面 OOM (Out Of Memory) 闪退。
+- 大量数据读写和 AI 运算，必须在非 UI 主线程执行或严格使用异步 `async/await`，禁止阻塞 UI 导致掉帧。

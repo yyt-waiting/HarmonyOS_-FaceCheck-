@@ -1,0 +1,42 @@
+# [Standard Skill Template]
+
+---
+metadata:
+  id: "SKILL-HM-00X"
+  name: "模块名称"
+  version: "1.2"
+  target_api: "HarmonyOS NEXT (API 12)"
+  category: "AI/Database/UI"
+  dependencies: ["@kit.xxx", "@kit.yyy"]
+  strictness: "High" # High/Medium/Low
+---
+
+# <skill_context>
+简述该技能在 FaceCheck 项目中的具体业务场景和核心价值。
+# </skill_context>
+
+# <constraints>
+## [强制约束]
+- 规则 1...
+- 规则 2...
+- 严禁行为...
+# </constraints>
+
+# <logic_flow>
+## [执行逻辑流]
+1. Step 1 -> ...
+2. Step 2 -> ...
+# </logic_flow>
+
+# <code_standards>
+## [标准模板]
+```typescript
+// 文件路径参考: ...
+// 关键导入: ...
+</code_standards>
+<verification_checklist>
+
+检查点 1: ...
+
+检查点 2: ...
+</verification_checklist>

@@ -1,0 +1,39 @@
+# Build outputs
+.ohos/
+.idea/
+*.iml
+
+# DevEco Studio
+.idea/
+*.hwi/
+*.hi/
+*.hap/
+*.hsp/
+*.hcf/
+
+# Generated files
+build/
+out/
+generated/
+*.pb.js
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+*.local
+
+# Temporary files
+*.tmp
+*.swp
+*~
