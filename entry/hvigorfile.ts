@@ -1,7 +1,6 @@
-{
-  "dependencies": {
-    "@ohos/hypium": "1.0.16",
-    "@ohos/hvigor-ohos-plugin": "3.2.2",
-    "@ohos/hvigor": "3.2.2"
-  }
-}
+import { hapTasks } from '@ohos/hvigor-ohos-plugin';
+
+export default {
+  system: hapTasks,
+  plugins: []
+};

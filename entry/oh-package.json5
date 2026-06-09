@@ -1,15 +1,17 @@
 {
   "license": "Apache-2.0",
-  "devDependencies": {},
   "name": "entry",
-  "ohos": {
-    "org": "huawei",
-    "deviceFamilies": [
-      "phone",
-      "tablet"
-    ],
-    "directory": "src/main/ets",
-    "summary": "FaceCheck AI Face Sign-In Application",
-    "version": "1.0.0"
+  "version": "1.0.0",
+  "description": "FaceCheck AI Face Sign-In Application",
+  "main": "",
+  "deviceTypes": [
+    "phone",
+    "tablet"
+  ],
+  "dependencies": {
+    "@ohos/hypium": "1.0.16"
+  },
+  "devDependencies": {
+    "@ohos/hvigor-ohos-plugin": "3.2.2"
   }
 }

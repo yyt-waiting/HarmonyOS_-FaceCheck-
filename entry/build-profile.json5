@@ -5,8 +5,7 @@
         "name": "default",
         "signingConfig": "default",
         "compileSdkVersion": 13,
-        "compatibleSdkVersion": 12,
-        "products": []
+        "compatibleSdkVersion": 12
       }
     ],
     "buildModeOptions": [],
