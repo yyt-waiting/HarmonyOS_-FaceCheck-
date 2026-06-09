@@ -1,7 +1,7 @@
 // Path: entry/src/main/ets/App.ets
 // 全局应用入口：配置 aboutToAppear / aboutToDisappear 生命周期
 
-import { logger } from '../ets/utils/Logger';
+import { logger } from '../utils/Logger';
 
 @Entry
 @Component

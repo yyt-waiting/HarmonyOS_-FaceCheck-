@@ -1,0 +1,3 @@
+// Placeholder icon — replace with your app icon PNG (1024x1024 recommended)
+// Save as: entry/src/main/resources/base/media/icon.png
+// After saving, register in: entry/src/main/resources/base/element/media.json

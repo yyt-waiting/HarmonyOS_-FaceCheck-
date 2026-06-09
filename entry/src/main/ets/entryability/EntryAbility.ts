@@ -1,20 +1,20 @@
-// Path: entry/src/main/ets/MainAbility/MainAbility.ts
-// MainAbility 入口：初始化数据库与主窗口加载
+// Path: entry/src/main/ets/entryability/EntryAbility.ts
+// Entry Ability 入口：初始化数据库与主窗口加载
 
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { initDatabase, destroyDatabase } from '../database/DataManager';
 import { logger } from '../utils/Logger';
 
-const TAG = 'MainAbility';
+const TAG = 'EntryAbility';
 
-export default class MainAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   onCreate(want, param) {
-    logger.info('MainAbility onCreate');
+    logger.info('EntryAbility onCreate');
   }
 
   async onDestroy() {
-    logger.info('MainAbility onDestroy');
+    logger.info('EntryAbility onDestroy');
     try {
       await destroyDatabase(this.context);
     } catch (err) {

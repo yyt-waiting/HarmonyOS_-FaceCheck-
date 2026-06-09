@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "FaceCheck AI 人脸刷脸签到应用"
+    },
+    {
+      "name": "entry_ability_desc",
+      "value": "FaceCheck 主入口"
+    },
+    {
+      "name": "entry_ability_label",
+      "value": "FaceCheck"
+    },
+    {
+      "name": "app_name",
+      "value": "FaceCheck"
+    },
+    {
+      "name": "camera_permission_reason",
+      "value": "FaceCheck 需要使用相机进行人脸识别和活体检测"
+    },
+    {
+      "name": "media_permission_reason",
+      "value": "FaceCheck 需要访问媒体文件用于人脸照片存储"
+    }
+  ]
+}

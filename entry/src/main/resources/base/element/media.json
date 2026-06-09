@@ -1,0 +1,12 @@
+{
+  "image": [
+    {
+      "name": "icon",
+      "value": "$media:icon"
+    },
+    {
+      "name": "app_icon",
+      "value": "$media:icon"
+    }
+  ]
+}

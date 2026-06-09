@@ -1,0 +1,27 @@
+{
+  "app": {
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 13,
+        "compatibleSdkVersion": 12,
+        "products": []
+      }
+    ],
+    "buildModeOptions": [],
+    "strictMode": {
+      "compatiblePolicy": {
+        "compileSdkVersion": 13
+      }
+    }
+  },
+  "entry": {
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default"
+      }
+    ]
+  }
+}

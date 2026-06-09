@@ -1,15 +1,48 @@
 // Path: entry/src/main/module.json5
-// 完整配置：requestPermissions + SystemCapabilities
+// 完整配置：ability 声明 + requestPermissions + pages 路由
 
 {
   "module": {
+    "name": "entry",
+    "type": "entry",
+    "srcEntrance": "./src/main/ets/entryability/EntryAbility.ts",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
     "requestPermissions": [
-      { "name": "ohos.permission.CAMERA" },
-      { "name": "ohos.permission.READ_MEDIA" },
-      { "name": "ohos.permission.WRITE_MEDIA" }
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:camera_permission_reason",
+        "usedScene": {
+          "abilities": ["EntryAbility"],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:media_permission_reason",
+        "usedScene": {
+          "abilities": ["EntryAbility"],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "$string:media_permission_reason",
+        "usedScene": {
+          "abilities": ["EntryAbility"],
+          "when": "inuse"
+        }
+      }
     ],
     "abilities": [
       {
+        "name": "EntryAbility",
+        "srcEntrance": "./src/main/ets/entryability/EntryAbility.ts",
+        "description": "$string:entry_ability_desc",
+        "icon": "$media:icon",
+        "label": "$string:entry_ability_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
         "skills": [
           {
             "entities": ["entity.system.home"],

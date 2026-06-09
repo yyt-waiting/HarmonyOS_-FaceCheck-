@@ -1,0 +1,15 @@
+{
+  "license": "Apache-2.0",
+  "devDependencies": {},
+  "name": "entry",
+  "ohos": {
+    "org": "huawei",
+    "deviceFamilies": [
+      "phone",
+      "tablet"
+    ],
+    "directory": "src/main/ets",
+    "summary": "FaceCheck AI Face Sign-In Application",
+    "version": "1.0.0"
+  }
+}
